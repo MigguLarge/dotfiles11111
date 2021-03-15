@@ -2,18 +2,20 @@
 syntax on
 
 set number
-set tabstop=2 softtabstop=2
+set tabstop=4 softtabstop=4
 set expandtab
 set nowrap
 set incsearch
 set smartcase
 set smartindent
 set autochdir
-set shiftwidth=2
+set shiftwidth=4
 set undodir
 set nobackup
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 
 " vim-plug Plugins
 call plug#begin('~/.config/nvim/plugged')
@@ -24,14 +26,14 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex'
-" Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'branch': 'release/1.x',
@@ -53,26 +55,34 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'digitaltoad/vim-pug'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+let g:jsx_ext_required = 0
+
 " Colorscheme settings
 let g:gruvbox_italic=1
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme onehalfdark
 " colorscheme jellybeans
 " colorscheme nord
-colorscheme onedark
+" colorscheme onedark
+" colorscheme base16-material
 
 " Background settings
 set background=dark
-" hi! Normal ctermbg=NONE guibg=NONE
-" hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
-" autocmd BufEnter * highlight Normal guibg=0
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+autocmd BufEnter * highlight Normal guibg=0
 
-" coc.nvim configs
+" Mappings
+imap jk <Esc>
+
+" " coc.nvim configs
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -241,16 +251,20 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " KeyMap settings
 let mapleader=" "
-let g:user_emmet_leader_key=','
 let g:prettier#config#config_precedence = 'file-override'
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+let g:prettier#config#single_quote = 'true'
 
 autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a Preview'
@@ -264,6 +278,6 @@ let g:lightline = {
 
 " airline config
 let g:airline#extensions#tabline#enebled = 1
-let g:airline#extensions#tabline#show_splits = 1
+" let g:airline#extensions#tabline#show_splits = 1
 nmap <Leader>] :bnext<CR>
 nmap <Leader>[ :bprevious<CR>

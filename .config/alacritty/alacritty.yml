@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 6
-   y: 6
+   x: 40
+   y: 40
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -55,13 +55,12 @@ window:
   # Window decorations
   #
   # Values for `decorations`:
-  #     - full: Borders and title bar
-  #     - none: Neither borders nor title bar
+  #     - full: Borders and title bar - none: Neither borders nor title bar
   #
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: transparent
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -177,96 +176,128 @@ window:
 
 # Colors (Atom One Dark)
 
-colors:
-  # Default colors
-  primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    bright_foreground: '0xe6efff'
-
-  # Cursor colors
+  # colors:
+  #   # Default colors
+  #   primary:
+  #     background: '0x1e2127'
+  #     foreground: '0xabb2bf'
   #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
-
-  # Normal colors
-  normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
-
-  # Bright colors
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xe6efff'
-
-  # Dim colors
+  #     # Bright and dim foreground colors
+  #     #
+  #     # The dimmed foreground color is calculated automatically if it is not present.
+  #     # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+  #     # is `false`, the normal foreground color will be used.
+  #     #dim_foreground: '0x9a9a9a'
+  #     bright_foreground: '0xe6efff'
   #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
-
-  # Indexed Colors
+  #   # Cursor colors
+  #   #
+  #   # Colors which should be used to draw the terminal cursor. If these are unset,
+  #   # the cursor color will be the inverse of the cell color.
+  #   #cursor:
+  #   #  text: '0x000000'
+  #   #  cursor: '0xffffff'
   #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #indexed_colors:
-  #  - { index: 16, color: '0x000000' }
+  #   # Normal colors
+  #   normal:
+  #     black:   '0x1e2127'
+  #     red:     '0xe06c75'
+  #     green:   '0x98c379'
+  #     yellow:  '0xd19a66'
+  #     blue:    '0x61afef'
+  #     magenta: '0xc678dd'
+  #     cyan:    '0x56b6c2'
+  #     white:   '0x828791'
+  #
+  #   # Bright colors
+  #   bright:
+  #     black:   '0x5c6370'
+  #     red:     '0xe06c75'
+  #     green:   '0x98c379'
+  #     yellow:  '0xd19a66'
+  #     blue:    '0x61afef'
+  #     magenta: '0xc678dd'
+  #     cyan:    '0x56b6c2'
+  #     white:   '0xe6efff'
+  #
+  #   # Dim colors
+  #   #
+  #   # If the dim colors are not set, they will be calculated automatically based
+  #   # on the `normal` colors.
+  #   dim:
+  #     black:   '0x1e2127'
+  #     red:     '0xe06c75'
+  #     green:   '0x98c379'
+  #     yellow:  '0xd19a66'
+  #     blue:    '0x61afef'
+  #     magenta: '0xc678dd'
+  #     cyan:    '0x56b6c2'
+  #     white:   '0x828791'
+  #
+  #   # Indexed Colors
+  #   #
+  #   # The indexed colors include all colors from 16 to 256.
+  #   # When these are not set, they're filled with sensible defaults.
+  #   #indexed_colors:
+  #   #  - { index: 16, color: '0x000000' }
 
-# Colors (Gruvbox Material Dark Medium)
-# colors:
-#   primary:
-#     background: '0x282828'
-#     foreground: '0xdfbf8e'
-# 
+# Base16 Material Darker - alacritty color config
+# Nate Peterson
+# colors: primary:
+#     background: '0x212121'
+#     foreground: '0xeeffff'
+#
+#   cursor:
+#     text: '0x212121'
+#     cursor: '0xeeffff'
+#
 #   normal:
-#     black:   '0x665c54'
-#     red:     '0xea6962'
-#     green:   '0xa9b665'
-#     yellow:  '0xe78a4e'
-#     blue:    '0x7daea3'
-#     magenta: '0xd3869b'
-#     cyan:    '0x89b482'
-#     white:   '0xdfbf8e'
-# 
+#     black:   '0x212121'
+#     red:     '0xf07178'
+#     green:   '0xc3e88d'
+#     yellow:  '0xffcb6b'
+#     blue:    '0x82aaff'
+#     magenta: '0xc792ea'
+#     cyan:    '0x89ddff'
+#     white:   '0xeeffff'
+#
 #   bright:
-#     black:   '0x928374'
-#     red:     '0xea6962'
-#     green:   '0xa9b665'
-#     yellow:  '0xe3a84e'
-#     blue:    '0x7daea3'
-#     magenta: '0xd3869b'
-#     cyan:    '0x89b482'
-#     white:   '0xdfbf8e'
+#     black:   '0x4a4a4a'
+#     red:     '0xf78c6c'
+#     green:   '0x303030'
+#     yellow:  '0x353535'
+#     blue:    '0xb2ccd6'
+#     magenta: '0xeeffff'
+#     cyan:    '0xff5370'
+#     white:   '0xffffff'
+#
+# draw_bold_text_with_bright_colors: false
+
+ # Colors (Gruvbox Material Dark Medium)
+colors:
+  primary:
+    background: '0x282828'
+    foreground: '0xdfbf8e'
+
+  normal:
+    black:   '0x665c54'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe78a4e'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
+
+  bright:
+    black:   '0x928374'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe3a84e'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
 
 # Colors (Nord)
 # colors:
@@ -482,7 +513,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-  background_opacity: 1.0
+background_opacity: 0.8
 
 #selection:
   # This string contains all characters that are used as separators for
